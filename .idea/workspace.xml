@@ -7,7 +7,6 @@
     <list default="true" id="c8f9cb83-a49e-4a1a-b5d9-8a01491261e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/03_ML_preprocessing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/03_ML_preprocessing.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +96,7 @@
       <workItem from="1790178164717" duration="21526000" />
       <workItem from="1790240596280" duration="16033000" />
       <workItem from="1790273863224" duration="764000" />
-      <workItem from="1790287020913" duration="4539000" />
+      <workItem from="1790287020913" duration="8224000" />
     </task>
     <servers />
   </component>
