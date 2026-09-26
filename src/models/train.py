@@ -41,8 +41,8 @@ preprocessor = ColumnTransformer([
 random_forest_model = Pipeline([
     ("preprocessor",preprocessor),
     ("regressor",RandomForestRegressor(
-        n_estimators=300,
-        max_depth=30,
+        n_estimators=250,
+        max_depth=35,
         min_samples_split=10,
         min_samples_leaf=1,
         max_features='sqrt'
