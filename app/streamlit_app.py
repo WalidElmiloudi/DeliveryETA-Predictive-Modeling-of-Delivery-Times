@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import requests
 import joblib
 import json
 from pathlib import Path
@@ -216,26 +217,30 @@ city = st.selectbox(
 
 if st.button("Predict Delivery Time"):
 
-    input_data = pd.DataFrame({
-        "Delivery_person_Age": [delivery_person_age],
-        "Delivery_person_Ratings": [delivery_person_ratings],
-        "Vehicle_condition": [vehicle_condition],
-        "multiple_deliveries": [multiple_deliveries],
-        "Distance_km": [distance_km],
-        "Order_picked_hour": [order_picked_hour],
-        "Pickup_delay_minute": [pickup_delay_minute],
-        "Weatherconditions": [weatherconditions],
-        "Road_traffic_density": [road_traffic_density],
-        "Type_of_vehicle": [type_of_vehicle],
-        "Festival": [festival],
-        "City": [city]
-    })
+    data = {
+        "Delivery_person_Age": delivery_person_age,
+        "Delivery_person_Ratings": delivery_person_ratings,
+        "Vehicle_condition": vehicle_condition,
+        "multiple_deliveries": multiple_deliveries,
+        "Distance_km": distance_km,
+        "Order_picked_hour": order_picked_hour,
+        "Pickup_delay_minute": pickup_delay_minute,
+        "Weatherconditions": weatherconditions,
+        "Road_traffic_density": road_traffic_density,
+        "Type_of_vehicle": type_of_vehicle,
+        "Festival": festival,
+        "City": city
+    }
 
-    model = joblib.load(f"{path}/models/model.joblib")
+    URL = "http://127.0.0.1:8000"
 
-    prediction = model.predict(input_data)
+    try:
+        response = requests.post(f"{URL}/predict",json=data)
+        result = response.json()
+    except requests.exceptions.ConnectionError:
+        print("Could not connect to the server.")
 
-    predicted_time = prediction[0]
+    predicted_time = result["prediction"]
 
     st.success(
         f"Estimated Delivery Time : **{predicted_time:.0f} minutes**"
